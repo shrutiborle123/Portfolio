@@ -1,0 +1,51 @@
+.hero{padding:84px 0 40px}
+.hero h1{font-size:clamp(3.2rem,11vw,7.2rem);font-weight:800;letter-spacing:-.035em;display:flex;flex-wrap:wrap;column-gap:.28em}
+.hero h1 .w{display:inline-block;white-space:nowrap;background:linear-gradient(100deg,var(--a1),var(--a2) 80%);-webkit-background-clip:text;background-clip:text;color:black;padding-bottom:.08em}
+.hero h1 .l{display:inline-block;animation:rise .8s cubic-bezier(.2,.8,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(60%) rotate(5deg)}}
+.hero .role{font:600 clamp(1.15rem,3vw,1.55rem) var(--head);margin:18px 0 18px;animation:fade 1s .9s both}
+.hero .role em{font-style:normal;color:var(--a3)}
+.hero p{max-width:58ch;color:var(--muted);margin:0 0 28px;animation:fade 1s 1.1s both}
+@keyframes fade{from{opacity:0;transform:translateY(12px)}}
+.road{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;position:relative;margin-top:64px;padding-top:34px}
+.road::before,.road::after{content:"";position:absolute;top:9px;left:0;right:0;height:3px;border-radius:3px}
+.road::before{background:var(--line)}
+.road::after{background:linear-gradient(90deg,var(--a1),var(--a2),var(--a3));transform-origin:left;animation:draw 2.4s 1.2s cubic-bezier(.5,0,.2,1) both}
+@keyframes draw{from{transform:scaleX(0)}}
+.road div{position:relative}
+.road div::before{content:"";position:absolute;top:-33px;left:0;width:21px;height:21px;border-radius:50%;background:var(--bg);border:4px solid var(--a2);animation:pop .5s both,pulse 2.6s 4s infinite}
+.road div:nth-child(1)::before{animation-delay:1.2s,4s}.road div:nth-child(2)::before{animation-delay:1.9s,4.3s}
+.road div:nth-child(3)::before{animation-delay:2.6s,4.6s}.road div:nth-child(4)::before{animation-delay:3.3s,4.9s;border-color:var(--a3)}
+@keyframes pop{from{transform:scale(0)}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--a2) 55%,transparent)}70%,100%{box-shadow:0 0 0 14px transparent}}
+.road b{display:block;font:800 1.05rem var(--head)}
+.road span{color:var(--muted);font-size:.9rem;line-height:1.4;display:block}
+.road div{opacity:0;animation:fade .7s both}
+.road div:nth-child(1){animation-delay:1.3s}.road div:nth-child(2){animation-delay:2s}.road div:nth-child(3){animation-delay:2.7s}.road div:nth-child(4){animation-delay:3.4s}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:56px}
+.stat{border:1px solid var(--line);background:var(--surface);border-radius:16px;padding:18px 20px}
+.stat strong{display:block;font:800 2.6rem var(--head);color:var(--a3);line-height:1}
+.stat span{color:var(--muted);font-size:.92rem}
+@keyframes drawy{from{transform:scaleY(0)}}
+.hero .btns{animation:fade 1s 1.3s both}
+.hero-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(3rem,8.5vw,5.8rem)}
+.portrait{position:relative;width:min(300px,70vw);aspect-ratio:1;justify-self:center;border-radius:50%;animation:fade 1s .6s both}
+.portrait::before{content:"";position:absolute;inset:-7px;border-radius:50%;background:conic-gradient(var(--a1),var(--a2),var(--a3),var(--a1));animation:spin 10s linear infinite}
+.portrait .frame{position:absolute;inset:0;border-radius:50%;overflow:hidden;background:var(--bg);border:5px solid var(--bg)}
+.portrait img{width:100%;height:100%;object-fit:cover;display:block}
+.portrait .initials{display:none;width:100%;height:100%;place-items:center;font:800 5rem var(--head);background:linear-gradient(135deg,var(--a1),var(--a2));color:var(--btn-ink)}
+.portrait.noimg img{display:none}.portrait.noimg .initials{display:grid}
+@keyframes spin{to{transform:rotate(1turn)}}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:56px}
+.tiles a{display:block;padding:18px 20px;border:1px solid var(--line);background:var(--surface);border-radius:14px;text-decoration:none;color:var(--ink);transition:transform .25s,border-color .25s}
+.tiles a:hover{transform:translateY(-4px);border-color:var(--a2)}
+.tiles b{display:block;font:800 1.1rem var(--head)}.tiles span{color:var(--muted);font-size:.92rem}
+@media (max-width:760px){
+  .hero{padding-top:44px}.hero-grid{grid-template-columns:1fr}.portrait{order:-1;width:min(220px,60vw);justify-self:start}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .road{grid-template-columns:1fr;padding:0 0 0 34px;margin-top:48px;gap:22px}
+  .road::before,.road::after{top:0;bottom:0;left:9px;right:auto;width:3px;height:auto}
+  .road::after{transform-origin:top;animation-name:drawy}
+  .road div::before{top:4px;left:-34px}
+}
